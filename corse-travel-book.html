@@ -384,9 +384,9 @@ S.days[7].locs=[
   L_({id:2, n:'Vol Figari → ORY',         t:'vol',      c:FIGARI,              time:'17:40',notes:'XK754 · arr. 19h25',photo:null,done:false}),
 ];
 
-const saved=localStorage.getItem('corse26v8');
+const saved=localStorage.getItem('corse26v9');
 if(saved){try{const d=JSON.parse(saved);if(d.days)S.days=d.days;}catch(e){}}
-function save(){try{localStorage.setItem('corse26v8',JSON.stringify({days:S.days}));}catch(e){}}
+function save(){try{localStorage.setItem('corse26v9',JSON.stringify({days:S.days}));}catch(e){}}
 
 // ── MAP ──
 let map,staticLayers=[],animRoutes=[],animTimer=null;
@@ -576,7 +576,8 @@ function dragEnd(e){
     el.classList.remove('dragging','drag-over');
   });
   dragIdx=null;
-}S.days[di].locs.splice(li,1);renderPills();renderDay();drawStaticLayers();animateDay(S.day);save();}
+}
+function removeLoc(di,li){S.days[di].locs.splice(li,1);renderPills();renderDay();drawStaticLayers();animateDay(S.day);save();}
 function toggleDone(di,li){S.days[di].locs[li].done=!S.days[di].locs[li].done;renderPills();renderDay();drawStaticLayers();animateDay(S.day);save();}
 
 // Upload via thumb click
